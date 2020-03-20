@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" /> 
+    <title>Tutorial Angulajs Produtos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container" ng-app="app" ng-controller="produtoController">
+      
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="nome">ID</label>
+            <input 
+              class="form-control" 
+              id="id"
+              type="text" 
+              disabled 
+              ng-model="id">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="nome">Nome do produto</label>
+            <input 
+              class="form-control" 
+              id="nome"
+              type="text"  
+              ng-model="nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="preco">Preço</label>
+            <input 
+              class="form-control" 
+              id="preco"
+              type="number" 
+              ng-model="preco">
+          </div>
+        </div>  
+        <div class="form-row">
+            <button type="button" class="btn btn-success col-md-6" ng-click="insert()" value="insert data">Inserir Produto</button>
+            <button ng-disabled="flag" type="button" class="btn btn-warning col-md-6" ng-click="update()" value="insert data">Editar</button>
+        </div>
+
+        <table class="table tale-striped">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome do produto</th>
+            <th scope="col">Preco</th>
+            <th scope="col">Ação</th>
+          </tr>
+          <tr  ng-repeat="produto in produtos">
+            <th  scope="row"><button type="button" class="btn btn-danger" ng-click="bindData(produto)">{{produto.id}}</button></th>
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td >
+              <button type="button" class="btn btn-danger" ng-click="deletar(produto)">excluir</button>
+            </td>
+
+          </tr>
+        </table>
+
+    </div>
+
+
+  </body>
+</html>
